@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpendWise — Personal Expense Tracker for students.">
+  <title>Transactions | SpendWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="mobile-header">
+  <a href="index.html" class="mobile-brand"><span class="brand-icon"><i class="fa-solid fa-wallet"></i></span><strong>SpendWise</strong></a>
+  <button class="icon-btn" id="sidebarOpen" type="button" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+</header>
+
+<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+  <div class="sidebar-brand">
+    <a href="index.html" class="brand-link" aria-label="SpendWise home">
+      <span class="brand-icon"><i class="fa-solid fa-wallet"></i></span>
+      <span>
+        <strong>SpendWise</strong>
+        <small>Personal Expense Tracker</small>
+      </span>
+    </a>
+    <button class="icon-btn sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" data-nav="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="dashboard.html" data-nav="dashboard"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a>
+    <a href="transactions.html" data-nav="transactions"><i class="fa-solid fa-right-left"></i><span>Transactions</span></a>
+    <a href="budget.html" data-nav="budget"><i class="fa-solid fa-bullseye"></i><span>Budget</span></a>
+    <a href="reports.html" data-nav="reports"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    <a href="settings.html" data-nav="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <p>Track Smart. Spend Better.</p>
+    <div class="sidebar-footer-row">
+      <span class="user-chip"><i class="fa-solid fa-user"></i> Student User</span>
+      <button class="theme-toggle mini" id="themeToggle" type="button" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<main class="main-content" data-page="transactions">
+<section class="page-header"><div><span class="eyebrow">Money activity</span><h1>Transactions</h1><p>Record and manage your income and spending.</p></div><div class="page-actions"><button class="btn btn-success" id="addIncomeBtn"><i class="fa-solid fa-plus"></i> Add Income</button><button class="btn btn-primary" id="addExpenseBtn"><i class="fa-solid fa-plus"></i> Add Expense</button></div></section>
+<section class="summary-strip" id="transactionSummary"></section>
+<section class="panel filters-panel">
+  <div class="filter-grid">
+    <label class="search-field"><i class="fa-solid fa-magnifying-glass"></i><input id="searchTransactions" type="search" placeholder="Search category, description, payment method..."></label>
+    <label>Type<select id="filterType"><option value="all">All</option><option value="income">Income</option><option value="expense">Expense</option></select></label>
+    <label>Category<select id="filterCategory"><option value="all">All categories</option></select></label>
+    <label>Date<select id="filterDate"><option value="all">All Time</option><option value="today">Today</option><option value="week">This Week</option><option value="month">This Month</option><option value="prev-month">Previous Month</option><option value="custom">Custom Range</option></select></label>
+    <label>Sort<select id="sortTransactions"><option value="newest">Newest First</option><option value="oldest">Oldest First</option><option value="amount-desc">Amount: High to Low</option><option value="amount-asc">Amount: Low to High</option><option value="category-asc">Category: A to Z</option></select></label>
+    <button class="btn btn-secondary" id="clearFiltersBtn" type="button"><i class="fa-solid fa-rotate-left"></i> Clear Filters</button>
+  </div>
+  <div class="custom-range" id="customRange"><label>Start date<input id="customStart" type="date"></label><label>End date<input id="customEnd" type="date"></label><small class="field-error" id="rangeError"></small></div>
+</section>
+<section class="panel"><div class="table-wrap"><table class="data-table"><thead><tr><th><input type="checkbox" id="selectAllTransactions" aria-label="Select all"></th><th>Transaction</th><th>Category</th><th>Payment</th><th>Date</th><th>Amount</th><th>Actions</th></tr></thead><tbody id="transactionTableBody"></tbody></table></div><div id="transactionEmpty" class="empty-state hidden"></div></section>
+
+<div class="modal-backdrop" id="transactionModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="transactionModalTitle">
+    <div class="modal-header"><div><span class="eyebrow">Transaction</span><h2 id="transactionModalTitle">Add Transaction</h2></div><button class="icon-btn" type="button" data-close-modal="transactionModal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+    <form id="transactionForm" novalidate>
+      <input type="hidden" id="transactionId">
+      <div class="form-grid two">
+        <label>Transaction Type<select id="transactionType" required><option value="expense">Expense</option><option value="income">Income</option></select><small class="field-error" data-error-for="transactionType"></small></label>
+        <label>Amount<input id="transactionAmount" type="number" min="0.01" step="0.01" inputmode="decimal" required placeholder="0.00"><small class="field-error" data-error-for="transactionAmount"></small></label>
+        <label>Category<select id="transactionCategory" required></select><small class="field-error" data-error-for="transactionCategory"></small></label>
+        <label>Date<input id="transactionDate" type="date" required><small class="field-error" data-error-for="transactionDate"></small></label>
+        <label class="full">Description<textarea id="transactionDescription" maxlength="250" rows="3" placeholder="What was this transaction for?"></textarea><div class="char-count"><span id="descriptionCount">0</span>/250</div></label>
+        <label>Payment Method<select id="transactionPayment"><option value="">Select method</option><option>Cash</option><option>UPI</option><option>Debit Card</option><option>Credit Card</option><option>Bank Transfer</option><option>Other</option></select></label>
+      </div>
+      <div class="modal-actions"><button class="btn btn-secondary" type="button" data-close-modal="transactionModal">Cancel</button><button class="btn btn-primary" type="submit" id="transactionSubmit">Add Transaction</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="confirmModal" aria-hidden="true">
+  <div class="modal small" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="modal-header"><div><span class="eyebrow">Confirmation</span><h2 id="confirmTitle">Please confirm</h2></div><button class="icon-btn" type="button" data-close-modal="confirmModal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+    <p id="confirmMessage" class="modal-message"></p>
+    <div class="modal-actions"><button class="btn btn-secondary" type="button" data-close-modal="confirmModal">Cancel</button><button class="btn btn-danger" type="button" id="confirmAction">Delete</button></div>
+  </div>
+</div>
+</main>
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+<script src="js/app.js" defer></script><script src="js/transactions.js" defer></script>
+</body>
+</html>

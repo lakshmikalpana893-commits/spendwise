@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpendWise — Personal Expense Tracker for students.">
+  <title>Budget | SpendWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="mobile-header">
+  <a href="index.html" class="mobile-brand"><span class="brand-icon"><i class="fa-solid fa-wallet"></i></span><strong>SpendWise</strong></a>
+  <button class="icon-btn" id="sidebarOpen" type="button" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+</header>
+
+<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+  <div class="sidebar-brand">
+    <a href="index.html" class="brand-link" aria-label="SpendWise home">
+      <span class="brand-icon"><i class="fa-solid fa-wallet"></i></span>
+      <span>
+        <strong>SpendWise</strong>
+        <small>Personal Expense Tracker</small>
+      </span>
+    </a>
+    <button class="icon-btn sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" data-nav="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="dashboard.html" data-nav="dashboard"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a>
+    <a href="transactions.html" data-nav="transactions"><i class="fa-solid fa-right-left"></i><span>Transactions</span></a>
+    <a href="budget.html" data-nav="budget"><i class="fa-solid fa-bullseye"></i><span>Budget</span></a>
+    <a href="reports.html" data-nav="reports"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    <a href="settings.html" data-nav="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <p>Track Smart. Spend Better.</p>
+    <div class="sidebar-footer-row">
+      <span class="user-chip"><i class="fa-solid fa-user"></i> Student User</span>
+      <button class="theme-toggle mini" id="themeToggle" type="button" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<main class="main-content" data-page="budget">
+<section class="page-header"><div><span class="eyebrow">Monthly planning</span><h1>Monthly Budget</h1><p>Set a spending limit and monitor your monthly expenses.</p></div></section>
+<div class="content-grid two-thirds">
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Budget control</span><h2 id="budgetMonthTitle">Current Month</h2></div><span class="badge badge-muted" id="budgetStatusBadge">No budget</span></div><div id="budgetOverview"></div><form id="budgetForm" class="form-grid two compact-form" novalidate><label>Budget amount<input id="budgetAmount" type="number" min="0.01" step="0.01" required placeholder="5000.00"><small class="field-error" data-error-for="budgetAmount"></small></label><label>Month<input id="budgetMonth" type="month" required><small class="field-error" data-error-for="budgetMonth"></small></label><div class="full form-note"><i class="fa-solid fa-circle-info"></i> SpendWise keeps one active monthly budget at a time. You can change the month by editing the current budget.</div><div class="full form-actions"><button class="btn btn-primary" type="submit" id="saveBudgetBtn">Save Budget</button><button class="btn btn-secondary" type="button" id="removeBudgetBtn">Remove Budget</button></div></form></section>
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Spending mix</span><h2>Category Expense Breakdown</h2></div></div><div id="budgetCategories"></div><div class="tip-box" id="budgetTip"></div></section>
+</div>
+</main>
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+<script src="js/app.js" defer></script><script src="js/budget.js" defer></script>
+</body>
+</html>

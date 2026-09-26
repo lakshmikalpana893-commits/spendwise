@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpendWise — Personal Expense Tracker for students.">
+  <title>Reports | SpendWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="mobile-header">
+  <a href="index.html" class="mobile-brand"><span class="brand-icon"><i class="fa-solid fa-wallet"></i></span><strong>SpendWise</strong></a>
+  <button class="icon-btn" id="sidebarOpen" type="button" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+</header>
+
+<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+  <div class="sidebar-brand">
+    <a href="index.html" class="brand-link" aria-label="SpendWise home">
+      <span class="brand-icon"><i class="fa-solid fa-wallet"></i></span>
+      <span>
+        <strong>SpendWise</strong>
+        <small>Personal Expense Tracker</small>
+      </span>
+    </a>
+    <button class="icon-btn sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" data-nav="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="dashboard.html" data-nav="dashboard"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a>
+    <a href="transactions.html" data-nav="transactions"><i class="fa-solid fa-right-left"></i><span>Transactions</span></a>
+    <a href="budget.html" data-nav="budget"><i class="fa-solid fa-bullseye"></i><span>Budget</span></a>
+    <a href="reports.html" data-nav="reports"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    <a href="settings.html" data-nav="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <p>Track Smart. Spend Better.</p>
+    <div class="sidebar-footer-row">
+      <span class="user-chip"><i class="fa-solid fa-user"></i> Student User</span>
+      <button class="theme-toggle mini" id="themeToggle" type="button" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<main class="main-content" data-page="reports">
+<section class="page-header"><div><span class="eyebrow">Financial analytics</span><h1>Reports and Insights</h1><p>Understand your income and spending patterns.</p></div><label class="month-picker">Report month<input type="month" id="reportMonth"></label></section>
+<section class="metric-grid reports-metrics" id="reportMetrics"></section>
+<div class="content-grid two-thirds">
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Monthly comparison</span><h2>Income vs Expense</h2></div></div><div id="incomeExpenseBars" class="compare-bars"></div></section>
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Categories</span><h2>Expense Breakdown</h2></div></div><div id="reportCategories"></div></section>
+</div>
+<div class="content-grid two-thirds">
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Visualized spending</span><h2>Spending Chart</h2></div></div><div class="chart-wrap" id="spendingChart"></div></section>
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Daily activity</span><h2>Daily Expense Activity</h2></div></div><div class="daily-chart" id="dailyChart"></div></section>
+</div>
+<div class="content-grid two-thirds">
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">High-value transactions</span><h2>Recent Large Expenses</h2></div></div><div id="largeExpenses"></div></section>
+  <section class="panel tip-card"><div class="tip-icon"><i class="fa-solid fa-brain"></i></div><div><span class="eyebrow">Financial Insight</span><h2 id="financialInsight">No transactions recorded for this month.</h2></div></section>
+</div>
+</main>
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+<script src="js/app.js" defer></script><script src="js/reports.js" defer></script>
+</body>
+</html>

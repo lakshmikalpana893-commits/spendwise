@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpendWise — Personal Expense Tracker for students.">
+  <title>Settings | SpendWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="mobile-header">
+  <a href="index.html" class="mobile-brand"><span class="brand-icon"><i class="fa-solid fa-wallet"></i></span><strong>SpendWise</strong></a>
+  <button class="icon-btn" id="sidebarOpen" type="button" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+</header>
+
+<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+  <div class="sidebar-brand">
+    <a href="index.html" class="brand-link" aria-label="SpendWise home">
+      <span class="brand-icon"><i class="fa-solid fa-wallet"></i></span>
+      <span>
+        <strong>SpendWise</strong>
+        <small>Personal Expense Tracker</small>
+      </span>
+    </a>
+    <button class="icon-btn sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" data-nav="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="dashboard.html" data-nav="dashboard"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a>
+    <a href="transactions.html" data-nav="transactions"><i class="fa-solid fa-right-left"></i><span>Transactions</span></a>
+    <a href="budget.html" data-nav="budget"><i class="fa-solid fa-bullseye"></i><span>Budget</span></a>
+    <a href="reports.html" data-nav="reports"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    <a href="settings.html" data-nav="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <p>Track Smart. Spend Better.</p>
+    <div class="sidebar-footer-row">
+      <span class="user-chip"><i class="fa-solid fa-user"></i> Student User</span>
+      <button class="theme-toggle mini" id="themeToggle" type="button" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<main class="main-content" data-page="settings">
+<section class="page-header"><div><span class="eyebrow">Preferences & backups</span><h1>Settings</h1><p>Manage your theme, data backups, and local privacy.</p></div></section>
+<div class="settings-grid">
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Appearance</span><h2>Theme Settings</h2></div></div><p class="panel-copy">Choose how SpendWise looks in this browser.</p><div class="theme-options"><button type="button" class="theme-option" data-theme-choice="light"><i class="fa-solid fa-sun"></i><span><strong>Light mode</strong><small>Clean and bright</small></span></button><button type="button" class="theme-option" data-theme-choice="dark"><i class="fa-solid fa-moon"></i><span><strong>Dark mode</strong><small>Comfortable in low light</small></span></button></div></section>
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Backup</span><h2>Export Data</h2></div></div><p class="panel-copy">Export all SpendWise data into one JSON backup file.</p><button class="btn btn-primary" id="exportBtn"><i class="fa-solid fa-download"></i> Export Data</button><div class="settings-note"><i class="fa-solid fa-shield-halved"></i> Your financial data is saved only in this browser.</div></section>
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Restore</span><h2>Import Data</h2></div></div><p class="panel-copy">Restore a valid SpendWise JSON backup. Existing SpendWise data will be replaced only after confirmation.</p><label class="file-input-wrap"><span class="btn btn-secondary"><i class="fa-solid fa-upload"></i> Choose JSON Backup</span><input id="importFile" type="file" accept=".json,application/json"></label><small id="importFileName" class="muted"></small></section>
+  <section class="panel danger-panel"><div class="panel-header"><div><span class="eyebrow">Danger zone</span><h2>Reset All Data</h2></div></div><p class="panel-copy">Permanently delete all transactions, budget information, and settings saved by SpendWise in this browser.</p><button class="btn btn-danger" id="resetDataBtn"><i class="fa-solid fa-trash"></i> Delete All Data</button></section>
+  <section class="panel about-panel"><div class="panel-header"><div><span class="eyebrow">About</span><h2>SpendWise 1.0</h2></div></div><div class="about-list"><div><strong>App name</strong><span>SpendWise</span></div><div><strong>Version</strong><span>1.0</span></div><div><strong>Built with</strong><span>HTML, CSS, JavaScript, and localStorage.</span></div><div><strong>Privacy</strong><span>Your financial data is saved only in this browser. Export a backup regularly.</span></div></div></section>
+</div>
+
+<div class="modal-backdrop" id="confirmModal" aria-hidden="true">
+  <div class="modal small" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="modal-header"><div><span class="eyebrow">Confirmation</span><h2 id="confirmTitle">Please confirm</h2></div><button class="icon-btn" type="button" data-close-modal="confirmModal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+    <p id="confirmMessage" class="modal-message"></p>
+    <div class="modal-actions"><button class="btn btn-secondary" type="button" data-close-modal="confirmModal">Cancel</button><button class="btn btn-danger" type="button" id="confirmAction">Delete</button></div>
+  </div>
+</div>
+</main>
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+<script src="js/app.js" defer></script><script src="js/settings.js" defer></script>
+</body>
+</html>

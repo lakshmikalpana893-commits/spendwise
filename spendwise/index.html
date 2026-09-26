@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpendWise — Personal Expense Tracker for students.">
+  <title>Home | SpendWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="mobile-header">
+  <a href="index.html" class="mobile-brand"><span class="brand-icon"><i class="fa-solid fa-wallet"></i></span><strong>SpendWise</strong></a>
+  <button class="icon-btn" id="sidebarOpen" type="button" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+</header>
+
+<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+  <div class="sidebar-brand">
+    <a href="index.html" class="brand-link" aria-label="SpendWise home">
+      <span class="brand-icon"><i class="fa-solid fa-wallet"></i></span>
+      <span>
+        <strong>SpendWise</strong>
+        <small>Personal Expense Tracker</small>
+      </span>
+    </a>
+    <button class="icon-btn sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" data-nav="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="dashboard.html" data-nav="dashboard"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a>
+    <a href="transactions.html" data-nav="transactions"><i class="fa-solid fa-right-left"></i><span>Transactions</span></a>
+    <a href="budget.html" data-nav="budget"><i class="fa-solid fa-bullseye"></i><span>Budget</span></a>
+    <a href="reports.html" data-nav="reports"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    <a href="settings.html" data-nav="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <p>Track Smart. Spend Better.</p>
+    <div class="sidebar-footer-row">
+      <span class="user-chip"><i class="fa-solid fa-user"></i> Student User</span>
+      <button class="theme-toggle mini" id="themeToggle" type="button" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<main class="main-content" data-page="home">
+<section class="hero-section">
+  <div class="hero-copy">
+    <span class="eyebrow"><i class="fa-solid fa-sparkles"></i> Student-friendly finance management</span>
+    <h1>Take Control of Every Rupee.</h1>
+    <p>Track income, manage expenses, set budgets, and understand your spending habits in one simple dashboard.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="dashboard.html"><i class="fa-solid fa-arrow-right"></i> Get Started</a>
+      <a class="btn btn-secondary" href="transactions.html"><i class="fa-solid fa-plus"></i> Add Transaction</a>
+    </div>
+    <div class="hero-meta"><span><i class="fa-solid fa-lock"></i> Browser-based</span><span><i class="fa-solid fa-mobile-screen"></i> Responsive</span><span><i class="fa-solid fa-database"></i> Local storage</span></div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-glow"></div>
+    <div class="finance-preview glass-card">
+      <div class="preview-top"><span>September overview</span><span class="status-dot"><i class="fa-solid fa-circle"></i> Live</span></div>
+      <div class="preview-balance">₹18,420.00</div>
+      <div class="preview-label">Available balance</div>
+      <div class="preview-grid">
+        <div><span class="mini-label">Income</span><strong class="positive">+₹28,000</strong></div>
+        <div><span class="mini-label">Expenses</span><strong class="negative">−₹9,580</strong></div>
+      </div>
+      <div class="mini-bars"><span class="h36"></span><span class="h55"></span><span class="h44"></span><span class="h72"></span><span class="h61"></span><span class="h85"></span><span class="h50"></span></div>
+      <div class="preview-footer"><span><i class="fa-solid fa-bullseye"></i> Budget ₹12,000</span><span>79.8% used</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-heading"><span class="eyebrow">Everything in one place</span><h2>Built around the way students spend.</h2><p>Simple controls, useful insights, and zero backend setup.</p></div>
+  <div class="feature-grid">
+    <article class="feature-card"><span class="feature-icon blue"><i class="fa-solid fa-arrow-right-arrow-left"></i></span><h3>Income and Expense Tracking</h3><p>Record money coming in and going out with categories, dates, payment methods, and notes.</p></article>
+    <article class="feature-card"><span class="feature-icon purple"><i class="fa-solid fa-bullseye"></i></span><h3>Budget Planning</h3><p>Set a monthly spending limit and see how much you can still spend.</p></article>
+    <article class="feature-card"><span class="feature-icon green"><i class="fa-solid fa-layer-group"></i></span><h3>Category-Wise Spending</h3><p>See where your money is going across food, travel, books, bills, shopping, and more.</p></article>
+    <article class="feature-card"><span class="feature-icon orange"><i class="fa-solid fa-clock-rotate-left"></i></span><h3>Expense History</h3><p>Search, filter, sort, edit, and delete transactions from one responsive workspace.</p></article>
+    <article class="feature-card"><span class="feature-icon cyan"><i class="fa-solid fa-chart-column"></i></span><h3>Reports and Insights</h3><p>Explore monthly comparisons, category charts, recent large expenses, and simple insights.</p></article>
+    <article class="feature-card"><span class="feature-icon slate"><i class="fa-solid fa-shield-halved"></i></span><h3>Private Browser-Based Storage</h3><p>Your finance data stays in this browser using localStorage, with export and import backups.</p></article>
+  </div>
+</section>
+
+<section class="section-block two-col-section">
+  <div>
+    <div class="section-heading left"><span class="eyebrow">How it works</span><h2>Three steps to better money habits.</h2></div>
+    <div class="step-list">
+      <div class="step-item"><span>01</span><div><h3>Add income and expenses</h3><p>Capture each transaction as it happens.</p></div></div>
+      <div class="step-item"><span>02</span><div><h3>Set a monthly budget</h3><p>Give your spending a clear limit.</p></div></div>
+      <div class="step-item"><span>03</span><div><h3>Review your insights</h3><p>Use reports to understand patterns and adjust.</p></div></div>
+    </div>
+  </div>
+  <div class="benefits-card">
+    <span class="eyebrow">Why SpendWise?</span>
+    <h3>Make everyday spending decisions with context.</h3>
+    <ul class="check-list">
+      <li><i class="fa-solid fa-circle-check"></i> Know where your money goes.</li>
+      <li><i class="fa-solid fa-circle-check"></i> Avoid overspending.</li>
+      <li><i class="fa-solid fa-circle-check"></i> Plan for books, travel, food, and other student needs.</li>
+      <li><i class="fa-solid fa-circle-check"></i> Track monthly financial habits.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="site-footer"><div><strong>SpendWise</strong><span>Built using HTML, CSS, and JavaScript</span></div><span id="currentYear"></span></footer>
+</main><div id="toastContainer" class="toast-container" aria-live="polite"></div><script src="js/app.js" defer></script></body></html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpendWise — Personal Expense Tracker for students.">
+  <title>Dashboard | SpendWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="mobile-header">
+  <a href="index.html" class="mobile-brand"><span class="brand-icon"><i class="fa-solid fa-wallet"></i></span><strong>SpendWise</strong></a>
+  <button class="icon-btn" id="sidebarOpen" type="button" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+</header>
+
+<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+  <div class="sidebar-brand">
+    <a href="index.html" class="brand-link" aria-label="SpendWise home">
+      <span class="brand-icon"><i class="fa-solid fa-wallet"></i></span>
+      <span>
+        <strong>SpendWise</strong>
+        <small>Personal Expense Tracker</small>
+      </span>
+    </a>
+    <button class="icon-btn sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="index.html" data-nav="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="dashboard.html" data-nav="dashboard"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></a>
+    <a href="transactions.html" data-nav="transactions"><i class="fa-solid fa-right-left"></i><span>Transactions</span></a>
+    <a href="budget.html" data-nav="budget"><i class="fa-solid fa-bullseye"></i><span>Budget</span></a>
+    <a href="reports.html" data-nav="reports"><i class="fa-solid fa-chart-simple"></i><span>Reports</span></a>
+    <a href="settings.html" data-nav="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <p>Track Smart. Spend Better.</p>
+    <div class="sidebar-footer-row">
+      <span class="user-chip"><i class="fa-solid fa-user"></i> Student User</span>
+      <button class="theme-toggle mini" id="themeToggle" type="button" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<main class="main-content" data-page="dashboard">
+<section class="page-header"><div><span class="eyebrow" id="greetingLabel">Good evening</span><h1>Dashboard</h1><p id="dashboardGreeting">Welcome back! Here is your financial summary.</p></div><div class="header-month" id="currentMonthLabel"></div></section>
+<section class="metric-grid" id="metricGrid"></section>
+<div class="content-grid two-thirds">
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Latest activity</span><h2>Recent Transactions</h2></div><a class="text-link" href="transactions.html">View All Transactions <i class="fa-solid fa-arrow-right"></i></a></div><div id="recentTransactions"></div></section>
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Monthly control</span><h2>Budget Status</h2></div><a class="btn btn-secondary btn-small" href="budget.html" id="budgetAction">Set Budget</a></div><div id="dashboardBudget"></div></section>
+</div>
+<div class="content-grid two-thirds">
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Where it goes</span><h2>Expense Category Summary</h2></div></div><div id="categorySummary"></div></section>
+  <section class="panel"><div class="panel-header"><div><span class="eyebrow">Fast actions</span><h2>Quick Actions</h2></div></div><div class="quick-action-grid"><a href="transactions.html" class="quick-action" data-action="income"><i class="fa-solid fa-arrow-down"></i><span>Add Income</span></a><a href="transactions.html" class="quick-action" data-action="expense"><i class="fa-solid fa-arrow-up"></i><span>Add Expense</span></a><a href="budget.html" class="quick-action"><i class="fa-solid fa-bullseye"></i><span>Set Monthly Budget</span></a><a href="reports.html" class="quick-action"><i class="fa-solid fa-chart-pie"></i><span>View Reports</span></a></div></section>
+</div>
+<section class="panel tip-card"><div class="tip-icon"><i class="fa-solid fa-lightbulb"></i></div><div><span class="eyebrow">Smart Spending Tip</span><h2 id="smartTip">Start by adding your first income or expense.</h2></div></section>
+</main>
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+<script src="js/app.js" defer></script><script src="js/dashboard.js" defer></script>
+</body>
+</html>
